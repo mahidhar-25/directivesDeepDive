@@ -1,6 +1,5 @@
 <main>
   <app-learning-resources />
-
   <hr />
 
   <app-auth />
@@ -9,5 +8,21 @@
   <p>only admins should see</p>
   } -->
 
-  <p *ngIf="isAdmin()">only admins should see</p>
+  <!-- <p *ngIf="isAdmin()">only admins should see</p> -->
+  <!-- //by default ng template doesnt show up this can be used to render on condition in future  *is used to generate ng-template -->
+  <!-- <ng-template appAuth="admin">
+    <p>only admins should see</p>
+  </ng-template> -->
+  <!--
+  //structural directives are used either on ng-template or prefix with * others
+  are used to change decor of element or dom behavoour -->
+  <p *appAuth="'admin'" appLog class="protected-content admin">
+    only admins should see
+  </p>
+  <p *appAuth="'user'" class="protected-content unauthenticated">
+    only users should see
+  </p>
+  <p *appAuth="'guest'" class="protected-content authenticated">
+    only guest should see
+  </p>
 </main>
